@@ -16,15 +16,39 @@ const autenticacaoRoutes = require('./src/routes/autenticacao');
 const fretesRoutes = require('./src/routes/fretes');
 const pagamentosRoutes = require('./src/routes/pagamentos');
 const recebimentosRoutes = require('./src/routes/recebimentos');
+const clientesRoutes = require('./src/routes/clientes');
+const ordensColetaRoutes = require('./src/routes/ordens-coleta');
+const veiculosRoutes = require('./src/routes/veiculos');
 
 app.use('/api/auth', autenticacaoRoutes);
 app.use('/api/fretes', fretesRoutes);
 app.use('/api/pagamentos', pagamentosRoutes);
 app.use('/api/recebimentos', recebimentosRoutes);
+app.use('/api/clientes', clientesRoutes);
+app.use('/api/ordens-coleta', ordensColetaRoutes);
+app.use('/api/veiculos', veiculosRoutes);
 
 // Rota de saúde
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'API en funcionamento', timestamp: new Date().toISOString() });
+  res.json({ status: 'API em funcionamento', timestamp: new Date().toISOString() });
+});
+
+// Rota raiz
+app.get('/', (req, res) => {
+  res.json({
+    mensagem: 'Bem-vindo à API de Gestão de Fretes',
+    versao: '1.0.0',
+    documentacao: '/api/docs',
+    endpoints: {
+      autenticacao: '/api/auth',
+      fretes: '/api/fretes',
+      pagamentos: '/api/pagamentos',
+      recebimentos: '/api/recebimentos',
+      clientes: '/api/clientes',
+      ordens_coleta: '/api/ordens-coleta',
+      veiculos: '/api/veiculos'
+    }
+  });
 });
 
 // Tratamento de erros 404
@@ -41,4 +65,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Acesse http://localhost:${PORT} para mais informações`);
 });
