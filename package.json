@@ -1,0 +1,25 @@
+{
+  "name": "sistema-fretes",
+  "version": "1.0.0",
+  "description": "Sistema de gestão de fretes, pagamentos e recebimentos",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0",
+    "dotenv": "^16.0.3",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "validator": "^13.9.0",
+    "cors": "^2.8.5",
+    "express-validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "jest": "^29.5.0"
+  }
+}
